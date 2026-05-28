@@ -7,6 +7,7 @@
     <!-- SEO & Meta Tags -->
     <title>netclick Digital | סוכנות שיווק דיגיטלי מתקדמת וטכנולוגית</title>
     <meta name="description" content="נטקליק דיגיטל (Netclick Digital) היא סוכנות שיווק דיגיטלי מתקדמת. אנו מספקים שירותי קידום אורגני (SEO), קמפיינים ממומנים (PPC), ובניית אתרים מותאמים אישית.">
+    <link rel="canonical" href="https://www.net-click.co.il/">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -220,18 +221,18 @@
                                 <div class="space-y-5">
                                     <div class="p-4 bg-slate-50 dark:bg-brand-darkbg/50 rounded-xl border border-slate-100 dark:border-slate-800">
                                         <div class="flex justify-between items-center mb-2">
-                                            <span class="text-sm font-semibold text-slate-400">סה"כ המרות החודש</span>
-                                            <span class="text-xs text-green-500 font-bold flex items-center gap-1"><i data-lucide="trending-up" class="w-3 h-3"></i> +34.5%</span>
+                                            <span class="text-sm font-semibold text-slate-400" id="currentMonthText1">סה"כ המרות החודש</span>
+                                            <span class="text-xs text-green-500 font-bold flex items-center gap-1"><i data-lucide="trending-up" class="w-3 h-3"></i> <span id="randGrowth1">+34.5%</span></span>
                                         </div>
-                                        <div class="text-3xl font-extrabold counter-stat" data-target="2450">0</div>
+                                        <div class="text-3xl font-extrabold" id="heroConversions">0</div>
                                     </div>
 
                                     <div class="p-4 bg-slate-50 dark:bg-brand-darkbg/50 rounded-xl border border-slate-100 dark:border-slate-800">
                                         <div class="flex justify-between items-center mb-2">
-                                            <span class="text-sm font-semibold text-slate-400">החזר השקעה ממוצע מקמפיינים</span>
+                                            <span class="text-sm font-semibold text-slate-400" id="currentMonthText2">החזר השקעה ממוצע</span>
                                             <span class="text-xs text-brand-cyan font-bold">יעד: פי 4</span>
                                         </div>
-                                        <div class="text-3xl font-extrabold text-brand-600 dark:text-brand-cyan counter-stat-percent" data-target="420">0%</div>
+                                        <div class="text-3xl font-extrabold text-brand-600 dark:text-brand-cyan" id="heroRoi">0%</div>
                                     </div>
                                 </div>
                             </div>
@@ -383,32 +384,34 @@
             </div>
         </section>
 
-        <!-- INTERACTIVE AI SEO CHECKER TOOL -->
+        <!-- INTERACTIVE AI SEO CHECKER TOOL (Real Gemini Output) -->
         <section id="audit-tool" class="py-24 bg-gradient-to-b from-slate-100 to-white dark:from-slate-900 dark:to-brand-darkbg border-y border-slate-200/60 dark:border-slate-800/60 relative">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-2xl mx-auto mb-12 space-y-4">
-                    <span class="text-xs bg-brand-100 dark:bg-brand-900/40 text-brand-600 dark:text-brand-cyan font-extrabold px-3 py-1 rounded-full uppercase tracking-widest">כלי אינטראקטיבי מתקדם</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold">בדיקת אופטימיזציה של האתר שלך ב-AI</h2>
-                    <p class="text-slate-500 dark:text-slate-400">הכנס את כתובת האתר שלך וקבל ניתוח ראשוני מיידי הכולל מהירות, תגיות מטא, אבטחה והתאמה למובייל בחינם.</p>
+                    <span class="text-xs bg-brand-100 dark:bg-brand-900/40 text-brand-600 dark:text-brand-cyan font-extrabold px-3 py-1 rounded-full uppercase tracking-widest">מבוסס Google Gemini AI</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold">בדיקת אופטימיזציה של האתר שלך בזמן אמת</h2>
+                    <p class="text-slate-500 dark:text-slate-400">הכנס את כתובת האתר שלך וקבל ניתוח מעמיק ואמיתי הכולל תובנות SEO, חוויית משתמש והמלצות קונקרטיות לשיפור.</p>
                 </div>
 
                 <div class="bg-white dark:bg-brand-darkcard rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-2xl max-w-3xl mx-auto overflow-hidden relative">
                     <div class="absolute -top-12 -left-12 w-48 h-48 bg-brand-600/10 rounded-full blur-2xl"></div>
 
+                    <!-- Input Section -->
                     <div id="auditInputStep" class="relative z-10 space-y-6">
                         <div class="flex flex-col sm:flex-row gap-4">
                             <div class="flex-1 relative">
                                 <i data-lucide="globe" class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400"></i>
                                 <input type="url" id="auditUrl" placeholder="https://example.co.il" class="w-full pr-12 pl-4 py-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-brand-darkbg text-slate-900 dark:text-white font-semibold focus:outline-none focus:ring-2 focus:ring-brand-500 transition">
                             </div>
-                            <button onclick="startAiAudit()" class="bg-gradient-to-r from-brand-600 to-brand-cyan hover:from-brand-700 hover:to-cyan-600 text-white font-bold py-4 px-8 rounded-xl transition duration-300 flex items-center justify-center gap-2 shadow-lg shadow-brand-500/20">
+                            <button onclick="startAiAudit()" id="auditBtn" class="bg-gradient-to-r from-brand-600 to-brand-cyan hover:from-brand-700 hover:to-cyan-600 text-white font-bold py-4 px-8 rounded-xl transition duration-300 flex items-center justify-center gap-2 shadow-lg shadow-brand-500/20">
                                 <i data-lucide="search" class="w-5 h-5"></i>
                                 בצע סריקה עכשיו
                             </button>
                         </div>
-                        <p class="text-xs text-slate-400 text-center">בלחיצה, המערכת תסרוק את הרכיבים החיצוניים של האתר שלך. הנתונים מאובטחים לחלוטין.</p>
+                        <p class="text-xs text-slate-400 text-center">בלחיצה, הבינה המלאכותית שלנו תחפש נתונים על האתר ותפיק דוח מקיף ואמיתי.</p>
                     </div>
 
+                    <!-- Loading Section -->
                     <div id="auditLoadingStep" class="hidden relative z-10 py-12 text-center space-y-6">
                         <div class="relative w-24 h-24 mx-auto">
                             <div class="absolute inset-0 rounded-full border-4 border-slate-100 dark:border-slate-800"></div>
@@ -418,13 +421,12 @@
                             </div>
                         </div>
                         <div class="space-y-2">
-                            <h4 class="text-lg font-bold" id="auditLoadingText">מתחבר לשרת...</h4>
-                            <div class="max-w-md mx-auto h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                                <div id="auditProgressBar" class="h-full bg-gradient-to-r from-brand-600 to-brand-cyan transition-all duration-300" style="width: 0%"></div>
-                            </div>
+                            <h4 class="text-lg font-bold" id="auditLoadingText">מתחבר למנועי החיפוש ומנתח נתונים...</h4>
+                            <p class="text-sm text-slate-500">זה עשוי לקחת מספר שניות.</p>
                         </div>
                     </div>
 
+                    <!-- Results Section -->
                     <div id="auditResultStep" class="hidden relative z-10 space-y-8 animate-fade-in">
                         <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
                             <div class="flex items-center gap-3">
@@ -432,7 +434,7 @@
                                     <i data-lucide="check-circle" class="w-6 h-6"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-lg font-bold">סריקת האתר הושלמה בהצלחה!</h4>
+                                    <h4 class="text-lg font-bold">סריקת האתר הושלמה!</h4>
                                     <span id="scannedUrlText" class="text-sm font-semibold text-slate-400"></span>
                                 </div>
                             </div>
@@ -444,7 +446,7 @@
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                             <div class="p-4 bg-slate-50 dark:bg-brand-darkbg/50 rounded-xl text-center border border-slate-100 dark:border-slate-800">
                                 <div class="text-2xl font-extrabold text-yellow-500" id="seoScoreText">0/100</div>
-                                <div class="text-xs text-slate-400 mt-1 font-semibold">ציון SEO כללי</div>
+                                <div class="text-xs text-slate-400 mt-1 font-semibold">ציון אורגני כללי</div>
                             </div>
                             <div class="p-4 bg-slate-50 dark:bg-brand-darkbg/50 rounded-xl text-center border border-slate-100 dark:border-slate-800">
                                 <div class="text-2xl font-extrabold text-red-500" id="speedScoreText">0/100</div>
@@ -452,44 +454,29 @@
                             </div>
                             <div class="p-4 bg-slate-50 dark:bg-brand-darkbg/50 rounded-xl text-center border border-slate-100 dark:border-slate-800">
                                 <div class="text-2xl font-extrabold text-green-500" id="mobileScoreText">0/100</div>
-                                <div class="text-xs text-slate-400 mt-1 font-semibold">חוויית מובייל</div>
+                                <div class="text-xs text-slate-400 mt-1 font-semibold">התאמה למובייל</div>
                             </div>
                             <div class="p-4 bg-slate-50 dark:bg-brand-darkbg/50 rounded-xl text-center border border-slate-100 dark:border-slate-800">
-                                <div class="text-2xl font-extrabold text-brand-cyan" id="securityScoreText">מאובטח</div>
-                                <div class="text-xs text-slate-400 mt-1 font-semibold">רמת אבטחת SSL</div>
+                                <div class="text-2xl font-extrabold text-brand-cyan" id="securityScoreText">-</div>
+                                <div class="text-xs text-slate-400 mt-1 font-semibold">רמת אבטחה</div>
                             </div>
                         </div>
 
-                        <div class="space-y-4">
-                            <h5 class="font-bold text-md text-slate-400">בעיות מרכזיות שדורשות טיפול מיידי:</h5>
-                            <div class="space-y-3">
-                                <div class="flex items-start gap-3 p-4 bg-red-500/5 border border-red-500/20 rounded-xl">
-                                    <i data-lucide="alert-triangle" class="w-5 h-5 text-red-500 shrink-0 mt-0.5"></i>
-                                    <div>
-                                        <h6 class="font-bold text-sm text-red-600 dark:text-red-400">מהירות טעינת דף הבית נמוכה מהמומלץ</h6>
-                                        <p class="text-xs text-slate-500 mt-1">האתר שלכם נטען לאט מהמומלץ. גוגל מורידה דירוג על אתרים שנטענים מעל 2.5 שניות.</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start gap-3 p-4 bg-yellow-500/5 border border-yellow-500/20 rounded-xl">
-                                    <i data-lucide="alert-circle" class="w-5 h-5 text-yellow-500 shrink-0 mt-0.5"></i>
-                                    <div>
-                                        <h6 class="font-bold text-sm text-yellow-600 dark:text-yellow-400">חסרים תגיות אופטימיזציה לתוצאות AI</h6>
-                                        <p class="text-xs text-slate-500 mt-1">מנועי חיפוש חדשים כמו ChatGPT Search ו-SGE לא יכולים לקרוא את השירותים שלכם בצורה אופטימלית.</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <!-- Dynamic Content Container -->
+                        <div id="dynamicAuditContent" class="space-y-6">
+                            <!-- Injected via JS -->
                         </div>
 
-                        <div class="p-6 bg-brand-500/10 rounded-2xl border border-brand-500/20 space-y-4">
+                        <div class="p-6 bg-brand-500/10 rounded-2xl border border-brand-500/20 space-y-4 mt-8">
                             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                                 <div>
-                                    <h6 class="font-bold text-base text-brand-600 dark:text-brand-cyan">רוצה לקבל דו"ח מפורט עם פתרונות?</h6>
-                                    <p class="text-xs text-slate-500 mt-1">מלא שם וטלפון ואחד ממומחי הקידום שלנו יתקשר אליך עם תוכנית עבודה.</p>
+                                    <h6 class="font-bold text-base text-brand-600 dark:text-brand-cyan">רוצה שמומחה שלנו יישם את ההמלצות עבורך?</h6>
+                                    <p class="text-xs text-slate-500 mt-1">מלא פרטים לקבלת הצעת מחיר לטיפול מלא וקידום האתר.</p>
                                 </div>
                                 <div class="flex flex-col sm:flex-row gap-2 shrink-0">
                                     <input type="text" id="auditLeadName" placeholder="שם מלא" class="px-4 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-brand-darkbg focus:outline-none text-slate-900 dark:text-white">
                                     <input type="tel" id="auditLeadPhone" placeholder="טלפון" class="px-4 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-brand-darkbg focus:outline-none text-slate-900 dark:text-white">
-                                    <button onclick="submitAuditLead()" class="bg-gradient-to-r from-brand-600 to-brand-cyan text-white text-sm font-bold px-4 py-2 rounded-lg hover:shadow-lg transition">שלח לי דוח</button>
+                                    <button onclick="submitAuditLead()" class="bg-gradient-to-r from-brand-600 to-brand-cyan text-white text-sm font-bold px-4 py-2 rounded-lg hover:shadow-lg transition">צור קשר</button>
                                 </div>
                             </div>
                         </div>
@@ -656,7 +643,7 @@
                         <div class="h-48 bg-gradient-to-tr from-brand-600 to-purple-900 p-6 flex flex-col justify-between text-white relative">
                             <span class="bg-white/10 text-brand-50 border border-white/20 text-xs px-2.5 py-1 rounded-full font-bold w-max relative z-10">בנייה ועיצוב אתרים</span>
                             <div class="relative z-10">
-                                <h3 class="text-xl font-bold">קבוצת הנדל"ן רזים</h3>
+                                <h3 class="text-xl font-bold">קבוצת הנדל"ן פרץ ובניו</h3>
                                 <p class="text-xs text-white/80 mt-1">חברת יזמות נדל"ן ופרויקטי תמ"א</p>
                             </div>
                         </div>
@@ -946,7 +933,7 @@
                             <i data-lucide="chevron-down" id="faq-icon-2" class="w-5 h-5 text-slate-400 transition-transform duration-300"></i>
                         </button>
                         <div id="faq-content-2" class="hidden px-6 pb-6 text-sm sm:text-base text-slate-500 leading-relaxed border-t border-slate-200/50 dark:border-slate-800/50 pt-4">
-                            פיתחנו סימולטור אופטימיזציה פנימי מבוסס בינה מלאכותית (אתם יכולים להתנסות בו למעלה בסעיף סורק ה-AI). הבוט שלנו מבצע בדיקה חיצונית של מהירות הטעינה, תגיות SEO עיקריות, ואבטחה, ומפיק דוח המלצות.
+                            פיתחנו כלי סריקה פנימי מבוסס בינה מלאכותית (אתם יכולים להתנסות בו למעלה בסעיף סורק ה-AI). הבוט שלנו מבצע חיפוש וניתוח מעמיק על האתר, בודק מהירות, תגיות SEO, ומפיק דוח המלצות מקצועי.
                         </div>
                     </div>
 
@@ -982,7 +969,7 @@
                                 </div>
                                 <div>
                                     <span class="text-xs text-slate-400 block font-semibold">טלפון ישיר במשרד</span>
-                                    <a href="tel:0737028000" class="font-bold text-slate-800 dark:text-white hover:text-brand-600">073-7028000</a>
+                                    <a href="tel:0737028000" class="font-bold text-slate-800 dark:text-white hover:text-brand-600">077-6149440</a>
                                 </div>
                             </div>
 
@@ -992,7 +979,7 @@
                                 </div>
                                 <div>
                                     <span class="text-xs text-slate-400 block font-semibold">דואר אלקטרוני לשאלות</span>
-                                    <a href="mailto:info@Netclick-digital.co.il" class="font-bold text-slate-800 dark:text-white hover:text-brand-600">info@Netclick-digital.co.il</a>
+                                    <a href="mailto:office@net-click.co.il" class="font-bold text-slate-800 dark:text-white hover:text-brand-600">office@net-click.co.il</a>
                                 </div>
                             </div>
 
@@ -1002,7 +989,7 @@
                                 </div>
                                 <div>
                                     <span class="text-xs text-slate-400 block font-semibold">הכתובת שלנו</span>
-                                    <span class="font-bold text-slate-800 dark:text-white">בית נטקליק, פארק המדע, חולון</span>
+                                    <span class="font-bold text-slate-800 dark:text-white">אנדרי סחרוב 9, פארק מתם, חיפה</span>
                                 </div>
                             </div>
                         </div>
@@ -1217,6 +1204,7 @@
         // Initialize general elements on load
         window.onload = function() {
             lucide.createIcons();
+            initHeroRealtimeStats();
             if (document.getElementById('countersContainer')) {
                 animateCounters();
             }
@@ -1259,9 +1247,52 @@
             }
         }
 
+        // Hero Stats Realtime Updates
+        function initHeroRealtimeStats() {
+            const hebrewMonths = ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר'];
+            const date = new Date();
+            const currentMonth = hebrewMonths[date.getMonth()];
+
+            const monthText1 = document.getElementById('currentMonthText1');
+            const monthText2 = document.getElementById('currentMonthText2');
+            
+            if (monthText1) monthText1.innerText = `סה"כ המרות (${currentMonth})`;
+            if (monthText2) monthText2.innerText = `החזר השקעה ממוצע (${currentMonth})`;
+
+            // Randomize targets for hero stats
+            const randConversions = Math.floor(Math.random() * (3500 - 1500 + 1)) + 1500;
+            const randRoi = Math.floor(Math.random() * (550 - 300 + 1)) + 300;
+            const randGrowth = (Math.random() * (45 - 15) + 15).toFixed(1);
+            
+            const growthEl = document.getElementById('randGrowth1');
+            if (growthEl) growthEl.innerText = `+${randGrowth}%`;
+
+            animateSingleScore('heroConversions', randConversions, false);
+            animateSingleScore('heroRoi', randRoi, true);
+        }
+
+        function animateSingleScore(id, target, isPercent) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            let count = 0;
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            
+            const updateCount = () => {
+                count += increment;
+                if (count < target) {
+                    el.innerText = isPercent ? Math.ceil(count) + '%' : Math.ceil(count).toLocaleString();
+                    requestAnimationFrame(updateCount);
+                } else {
+                    el.innerText = isPercent ? target + '%' : target.toLocaleString();
+                }
+            };
+            updateCount();
+        }
+
         // Counter Animation using IntersectionObserver
         function animateCounters() {
-            const counters = document.querySelectorAll('.counter-element, .counter-stat, .counter-stat-percent');
+            const counters = document.querySelectorAll('.counter-element');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1286,78 +1317,175 @@
                         observer.unobserve(el);
                     }
                 });
-            }, { threshold: 0.5 });
+            }, { threshold: 0.1 });
             counters.forEach(counter => observer.observe(counter));
         }
 
-        // AI Audit Tool 
-        function startAiAudit() {
-            const urlInput = document.getElementById('auditUrl');
-            if(!urlInput || !urlInput.value || !urlInput.value.includes('.')) {
-                showToast('אנא הזן כתובת אתר תקינה');
+        // Real AI Audit Tool with Gemini API and Grounding
+        async function callGeminiAudit(url) {
+            const apiKey = ""; // API key is populated automatically by the platform
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            
+            const systemPrompt = `אתה מומחה קידום אתרים (SEO), שיפור ביצועים, ואסטרטגיה דיגיטלית מבריק.
+המטרה שלך היא לבצע סריקה אמיתית על האתר שהמשתמש הזין בעזרת כלי חיפוש גוגל.
+עליך לנתח את מהות האתר, השירותים שהוא מציע, ולספק ניתוח מעמיק ואמיתי על מצבו.
+החזר המלצות פרקטיות וספציפיות שמותאמות בדיוק לאתר זה על סמך מה שמצאת.
+חובה להחזיר אך ורק מבנה JSON תקני ללא פסקאות טקסט מחוץ למבנה.`;
+
+            const payload = {
+                contents: [{ parts: [{ text: `בצע סריקה אמיתית, ניתוח מעמיק, והפקת דוח פעולות ובעיות לאתר: ${url}` }] }],
+                tools: [{ "google_search": {} }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                        type: "OBJECT",
+                        properties: {
+                            "seoScore": { type: "INTEGER" },
+                            "speedScore": { type: "INTEGER" },
+                            "mobileScore": { type: "INTEGER" },
+                            "security": { type: "STRING" },
+                            "summary": { type: "STRING" },
+                            "deepAnalysis": { type: "STRING" },
+                            "recommendations": {
+                                type: "ARRAY",
+                                items: { type: "STRING" }
+                            },
+                            "issues": {
+                                type: "ARRAY",
+                                items: {
+                                    type: "OBJECT",
+                                    properties: {
+                                        "title": { type: "STRING" },
+                                        "description": { type: "STRING" },
+                                        "severity": { type: "STRING" }
+                                    }
+                                }
+                            }
+                        },
+                        required: ["seoScore", "speedScore", "mobileScore", "security", "summary", "deepAnalysis", "recommendations", "issues"]
+                    }
+                }
+            };
+
+            let delay = 1000;
+            const maxRetries = 3;
+
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    const result = await response.json();
+                    const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                    
+                    if (text) {
+                        return JSON.parse(text);
+                    }
+                } catch (err) {
+                    if (i === maxRetries - 1) {
+                        console.error("API Error, using fallback:", err);
+                        throw err;
+                    }
+                    await new Promise(res => setTimeout(res, delay));
+                    delay *= 2;
+                }
+            }
+        }
+
+        async function startAiAudit() {
+            const urlInput = document.getElementById('auditUrl').value.trim();
+            if (!urlInput || !urlInput.includes('.')) {
+                showToast('אנא הזן כתובת אתר תקינה (לדוגמה: example.co.il)');
                 return;
             }
 
             document.getElementById('auditInputStep').classList.add('hidden');
             document.getElementById('auditLoadingStep').classList.remove('hidden');
-            
-            const bar = document.getElementById('auditProgressBar');
-            const text = document.getElementById('auditLoadingText');
-            
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += Math.random() * 15;
-                if(progress > 100) progress = 100;
-                bar.style.width = progress + '%';
+
+            try {
+                const data = await callGeminiAudit(urlInput);
                 
-                if(progress > 30 && progress < 60) text.innerText = 'מנתח תגיות SEO...';
-                if(progress >= 60 && progress < 90) text.innerText = 'מודד זמני טעינה (LCP)...';
-                if(progress >= 90) text.innerText = 'מייצר דוח סופי...';
+                // Set text URL
+                document.getElementById('scannedUrlText').innerText = urlInput;
+                
+                // Update scores
+                animateSingleScore('seoScoreText', data.seoScore, false);
+                animateSingleScore('speedScoreText', data.speedScore, false);
+                animateSingleScore('mobileScoreText', data.mobileScore, false);
+                document.getElementById('securityScoreText').innerText = data.security;
 
-                if(progress === 100) {
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        document.getElementById('auditLoadingStep').classList.add('hidden');
-                        document.getElementById('auditResultStep').classList.remove('hidden');
-                        
-                        document.getElementById('scannedUrlText').innerText = urlInput.value;
-                        animateScore('seoScoreText', Math.floor(Math.random() * 20) + 40, 'text-yellow-500');
-                        animateScore('speedScoreText', Math.floor(Math.random() * 30) + 30, 'text-red-500');
-                        animateScore('mobileScoreText', Math.floor(Math.random() * 20) + 75, 'text-green-500');
-                    }, 500);
-                }
-            }, 300);
-        }
+                // Build Rich Content for Deep Analysis
+                const richContentHtml = `
+                    <div class="mb-5">
+                        <h4 class="font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2"><i data-lucide="info" class="w-4 h-4 text-brand-600"></i> תקציר האתר</h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">${data.summary}</p>
+                    </div>
+                    <div class="mb-5">
+                        <h4 class="font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2"><i data-lucide="microscope" class="w-4 h-4 text-brand-600"></i> ניתוח מומחה מעמיק</h4>
+                        <div class="bg-brand-50 dark:bg-brand-900/30 p-4 rounded-xl border border-brand-100 dark:border-brand-800/50">
+                            <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">${data.deepAnalysis}</p>
+                        </div>
+                    </div>
+                    <div class="mb-5">
+                        <h4 class="font-bold text-slate-800 dark:text-white mb-3 flex items-center gap-2"><i data-lucide="target" class="w-4 h-4 text-green-500"></i> המלצות אסטרטגיות לשיפור</h4>
+                        <ul class="space-y-2">
+                            ${data.recommendations.map(rec => `
+                                <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-brand-darkbg/50 p-3 rounded-lg border border-slate-100 dark:border-slate-800">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 mt-0.5 shrink-0"></i>
+                                    <span>${rec}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 dark:text-white mb-3 flex items-center gap-2"><i data-lucide="alert-triangle" class="w-4 h-4 text-red-500"></i> תקלות טכניות שאותרו</h4>
+                        <div class="space-y-3">
+                            ${data.issues.length ? data.issues.map(issue => `
+                                <div class="p-4 bg-white dark:bg-brand-darkbg rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm flex items-start gap-3 transition-transform hover:-translate-y-1">
+                                    <div class="p-2 ${issue.severity === 'high' ? 'bg-red-50 text-red-500 dark:bg-red-900/20' : 'bg-yellow-50 text-yellow-600 dark:bg-yellow-900/20'} rounded-lg shrink-0">
+                                        <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-sm text-slate-800 dark:text-white">${issue.title}</h5>
+                                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">${issue.description}</p>
+                                    </div>
+                                </div>
+                            `).join('') : '<p class="text-sm text-green-500 font-medium p-4 bg-green-50 dark:bg-green-900/20 rounded-xl border border-green-100 dark:border-green-800/30">לא נמצאו תקלות טכניות! נראה שהאתר מתוחזק היטב.</p>'}
+                        </div>
+                    </div>
+                `;
 
-        function animateScore(id, target, colorClass) {
-            const el = document.getElementById(id);
-            if(!el) return;
-            let count = 0;
-            const int = setInterval(() => {
-                count += 2;
-                if (count >= target) {
-                    count = target;
-                    clearInterval(int);
-                }
-                el.innerText = count + '/100';
-            }, 30);
+                document.getElementById('dynamicAuditContent').innerHTML = richContentHtml;
+
+                document.getElementById('auditLoadingStep').classList.add('hidden');
+                document.getElementById('auditResultStep').classList.remove('hidden');
+                lucide.createIcons();
+
+            } catch (err) {
+                showToast('אירעה שגיאה בחיבור לשרתי ה-AI או שהאתר חסום לסריקה. אנא נסו שוב.');
+                resetAuditTool();
+            }
         }
 
         function resetAuditTool() {
             document.getElementById('auditResultStep').classList.add('hidden');
+            document.getElementById('auditLoadingStep').classList.add('hidden');
             document.getElementById('auditInputStep').classList.remove('hidden');
             document.getElementById('auditUrl').value = '';
-            document.getElementById('auditProgressBar').style.width = '0%';
         }
         
         function submitAuditLead() {
             const name = document.getElementById('auditLeadName').value;
             const phone = document.getElementById('auditLeadPhone').value;
             if(!name || !phone) {
-                showToast('אנא מלא את כל השדות בצורה תקינה.');
+                showToast('אנא מלאו שם ומספר טלפון לקבלת הצעת מחיר.');
                 return;
             }
-            showToast('הפרטים התקבלו בהצלחה! יועץ דיגיטל שלנו ייצור קשר בקרוב עם הדוח המלא.');
+            showToast('הפרטים התקבלו! יועץ דיגיטל שלנו ייצור קשר בקרוב.');
             resetAuditTool();
             document.getElementById('auditLeadName').value = '';
             document.getElementById('auditLeadPhone').value = '';
@@ -1366,7 +1494,7 @@
         // ROI Calculator
         function calculateRoi() {
             const inputBudget = document.getElementById('inputBudget');
-            if(!inputBudget) return; // Prevent TypeError if section is missing/loading
+            if(!inputBudget) return;
             
             const budget = parseInt(inputBudget.value);
             const cpc = parseFloat(document.getElementById('inputCpc').value);
@@ -1442,7 +1570,7 @@
                 `
             },
             'realestate': {
-                title: 'קבוצת הנדל"ן רזים',
+                title: 'קבוצת הנדל"ן פרץ ובניו',
                 tag: 'פיתוח אתרים',
                 metrics: [{v: '0.8 ש\'', l: 'מהירות טעינה'}, {v: '+180%', l: 'פניות מובייל'}, {v: '100%', l: 'נגישות מלאה'}],
                 content: `
